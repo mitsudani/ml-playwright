@@ -1,0 +1,13 @@
+{
+  "name": "ml-playwright",
+  "version": "1.0.0",
+  "description": "e2e testing Mercado Libre website with Playwright",
+  "main": "index.js",
+  "scripts": {},
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.44.1",
+    "@types/node": "^20.14.2"
+  }
+}
