@@ -13,12 +13,22 @@ export class SearchResultPage {
 
     // Assert sponsored items are only the three first ones
     async assertSponsoredItems(locator: Locator) {
-        for (let i = 0; i < await locator.count(); i++) {
+        const locators = await locator.all();
+        locators.forEach(async (el, i) => {
             if (i < 3) {
-                await expect(locator.nth(i)).toHaveText(/Promocionado/);
+                await expect(el).toHaveText(/Promocionado/);
             } else {
-                await expect(locator.nth(i)).not.toHaveText(/Promocionado/);
+                await expect(el).not.toHaveText(/Promocionado/);
             }
-        }
+        });
+
+        // for loop version with count()
+        // for (let i = 0; i < await locator.count(); i++) {
+        //     if (i < 3) {
+        //         await expect(locator.nth(i)).toHaveText(/Promocionado/);
+        //     } else {
+        //         await expect(locator.nth(i)).not.toHaveText(/Promocionado/);
+        //     }
+        // }
     }
 }
