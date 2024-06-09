@@ -30,8 +30,9 @@ export default defineConfig({
     trace: 'on-first-retry',
     screenshot: 'on',
     launchOptions: {
-      slowMo: 50,
+      slowMo: 1000,
     },
+    //testIdAttribute: 'data-link-id',
   },
 
   /* Configure projects for major browsers */
