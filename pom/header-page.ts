@@ -11,7 +11,10 @@ export class HeaderPage {
         this.page = page;
         this.searchInput = page.getByPlaceholder("Buscar productos, marcas y más…");
         this.searchButton = page.locator(".nav-search-btn");
-        this.loginLink = page.getByTestId("login");
+        // Example of xpath locator:
+        this.loginLink = page.locator("xpath=//*[@id='nav-header-menu']/a[contains(text(),'Ingresá')]");
+        // Locator with overridden attribute name in getByTestId()
+        //this.loginLink = page.getByTestId("login");
     }
 
     async searchItems(item: string) {

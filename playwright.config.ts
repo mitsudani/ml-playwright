@@ -30,7 +30,7 @@ export default defineConfig({
     trace: 'on-first-retry',
     screenshot: 'on',
     launchOptions: {
-      slowMo: 1000,
+      slowMo: 3000,
     },
     //testIdAttribute: 'data-link-id',
   },
@@ -42,10 +42,10 @@ export default defineConfig({
       use: { ...devices['Desktop Chrome'] },
     },
 
-    {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
-    },
+    // {
+    //   name: 'firefox',
+    //   use: { ...devices['Desktop Firefox'] },
+    // },
 
     // {
     //   name: 'webkit',
