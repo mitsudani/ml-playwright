@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "e2e testing Mercado Libre website with Playwright",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "playwright:d": "playwright test --headed --debug",
+    "playwright-skip-flaky": "npx playwright test --grep-invert @flaky"
+  },
   "author": "",
   "license": "ISC",
   "devDependencies": {

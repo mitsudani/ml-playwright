@@ -20,19 +20,29 @@ test.describe('Mercado Libre', () => {
         await expect(homePage.accesosDinamicosCardsContainer).toBeVisible();
     });
 
-    test('search Estee Lauder item', async ({ page }) => {
+    test('search items', {
+        tag: ['@slow', '@flaky'],
+    }, async ({ page }) => {
         const headerPage = new HeaderPage(page);
         const searchResultPage = new SearchResultPage(page);
         const totalResultCards = 54;
-        await headerPage.searchItems("estee lauder");
+        await headerPage.searchItems("velas de soja");
         await expect(searchResultPage.resultCards).toHaveCount(totalResultCards);
         await searchResultPage.assertSponsoredItems(searchResultPage.resultCards);
     });
 
-    test.only('show Captcha validation when login', async ({ page }) => {
+    test('show Captcha validation when login', async ({ page }) => {
+        const user = process.env.USER as string;
         const headerPage = new HeaderPage(page);
         const loginPage = new LoginPage(page);
         await headerPage.loginLink.click();
-        await loginPage.assertCaptchaValidation("");
+        await loginPage.assertCaptchaValidation(user);
+    });
+
+    test('API testing', async ({ page }) => {
+        const response = await page.request.get('/menu/departments?zipcode=');
+        const responseBody = await response.json();
+        expect(response.status()).toBe(200);
+        expect(responseBody.departments[0]).toHaveProperty("name", "Tecnología");
     });
 });
